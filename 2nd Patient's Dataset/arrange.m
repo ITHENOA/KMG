@@ -14,13 +14,13 @@ gestures = ["fist","fist","index","index","middle","middle","pinky","pinky",...
 
 % make folders
 classes = categorical(gestures);
-parentFolder = "data_mat_128_mag";
+parentFolder = "data_mat_28_mag";
 for i = 1:length(classes)
     mkdir(fullfile(parentFolder,string(classes(i))));
 end
 
 % pars
-imgSize = [128 128];
+imgSize = [28 28];
 nChannel = 16;
 sample = 0;
 Magnitude = @(x) sqrt(x(:,1).^2 + x(:,2).^2 + x(:,3).^2);
