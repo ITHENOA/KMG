@@ -1,0 +1,15 @@
+clear;clc
+% PARAMETERS
+windowSize = 200;
+imgSize = [28 28];
+sig = load("agregated.mat").agregated;
+for sensor = 1:12
+ = scalogram(sig(:,sensor),imgSize)
+%%
+function img = scalogram(data,imgSize)
+    fb = cwtfilterbank('SignalLength',length(data),'VoicesPerOctave',12);
+    cfs = abs(fb.wt(data));
+    img = rescale(cfs); % between [0,1]
+    % img = im2uint8(img); % not recommended for .mat (.jpg?)
+    img = imresize(img, imgSize); % resize
+end
